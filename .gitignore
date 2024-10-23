@@ -1,0 +1,25 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+*.csv
+*.xlsx
+*.tif
+*.jpeg
+*.gif
+*.xml
+*.shp
+*.txt
+*.wav
+*.mp3
+*.jpg
+*.pdf
+*.Rdata
+*.html
+*.WAV
+*.mp4
+
+# Folders
+examples/
+

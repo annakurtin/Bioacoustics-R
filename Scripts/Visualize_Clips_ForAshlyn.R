@@ -65,14 +65,16 @@ for(i in 1:nrow(clips_top)){
           tlab = "Time (s)",
           flab = "Frequency (kHz)",
           main = paste0(current_clip$species_code,", clip start: ",current_clip$begin_time_s),
-          listen = TRUE) # Add a title
+          listen = TRUE) 
   
   df[i, "annotation"] <- readline("Annotation:")
   df[i, "comments"] <- readline("Comments:")
+  
+  # Add something that saves df here or writes it as a csv?  orjust only run this on small files
 }
 
 # Write the csv you made where you want it to go
-#write.csv(df, paste0("./path_to_outputs/",site,audio,".csv"))
+#write.csv(df, paste0("./examples/ah_dat/",site,file,".csv"), row.names = FALSE)
 
 
 

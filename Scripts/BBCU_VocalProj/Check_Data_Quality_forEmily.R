@@ -4,6 +4,7 @@
 # Setup 
 library(warbleR)
 library(seewave)
+library(tuneR)
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Step 1: make sure they're in the correct format
@@ -13,8 +14,8 @@ library(seewave)
 #sox "C:\Users\ak201255\Documents\Bioacoustics-R\examples\bbcu_xc_mp3\16525.mp3" "C:\Users\ak201255\Documents\Bioacoustics-R\examples\16525.wav"
 #list.files(path = "./examples/bbcu_xc_mp3", pattern = "\\.mp3$", full.names = TRUE)
 # Issues wtih running sox on this bc the version I downloaded doesn't have mp3 support?????
-mp32wav(path = "./examples/bbcu_xc_mp3", dest.path = "./examples/test_wav")
-# Error is saying all .mp3 files have been converted?
+mp32wav(path = "./examples/bbcu_xc_mp3", dest.path = "./examples/bbcu_xc_wav")
+# Still not working
 # 
 # # Can get around this with this code if needed:
 # library(tuneR)
@@ -22,7 +23,7 @@ mp32wav(path = "./examples/bbcu_xc_mp3", dest.path = "./examples/test_wav")
 # writeWave(r,"./examples/bbcu_xc_wav/16525.wav",extensible=FALSE)
 
 # Use this loop
-folder <- "./examples/bbcu_xc_mp3"
+folder <- "F:/Cuckoo_Acoustic_Data/BBCU_Xeno-Canto_Files/coccyzus-erythropthalmus/mp3s"
 files <- list.files(folder)
 folder_wav <- "./examples/bbcu_xc_wav"
 
@@ -39,15 +40,16 @@ for(i in files){
 # Step 2: Standardize parameters of files
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Let's check out the properties of the .wav sound files
-info_sound_files(path = "./examples/bbcu_xc_wav")
+info_sound_files(path = "./examples/bbcu_xc_wav_orig")
 # You want the same sampling rate, dynamic interval and number of channels
 
 # Let's make them all the same parameters so that we can compare them 
-fix_wavs(path = "./examples/bbcu_xc_wav", samp.rate = 44.1, bit.depth = 24)
+# Make them all 44.1 and 16 bit depth
+fix_wavs(path = "./examples/bbcu_xc_wav_standardized", samp.rate = 44.1, bit.depth = 16)
 # Check that this worked
-info_sound_files(path = "./examples/bbcu_xc_wav/converted_sound_files")
+info_sound_files(path = "./examples/bbcu_xc_wav_standardized/converted_sound_files")
 # Yay this works!!!!
-check_sound_files()
+#check_sound_files()
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Step 3: Annotate in Raven

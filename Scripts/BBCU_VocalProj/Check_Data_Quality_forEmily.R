@@ -9,8 +9,12 @@ library(seewave)
 # Step 1: make sure they're in the correct format
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # # Convert any mp3 files to wav
-# mp32wav(path = "./examples/bbcu_xc_mp3", dest.path = "./examples/bbcu_xc_wav")
-# ## Not working - sox is being weird??????
+#list.files("./examples/bbcu_xc_mp3")
+#sox "C:\Users\ak201255\Documents\Bioacoustics-R\examples\bbcu_xc_mp3\16525.mp3" "C:\Users\ak201255\Documents\Bioacoustics-R\examples\16525.wav"
+#list.files(path = "./examples/bbcu_xc_mp3", pattern = "\\.mp3$", full.names = TRUE)
+# Issues wtih running sox on this bc the version I downloaded doesn't have mp3 support?????
+mp32wav(path = "./examples/bbcu_xc_mp3", dest.path = "./examples/test_wav")
+# Error is saying all .mp3 files have been converted?
 # 
 # # Can get around this with this code if needed:
 # library(tuneR)
@@ -41,7 +45,8 @@ info_sound_files(path = "./examples/bbcu_xc_wav")
 # Let's make them all the same parameters so that we can compare them 
 fix_wavs(path = "./examples/bbcu_xc_wav", samp.rate = 44.1, bit.depth = 24)
 # Check that this worked
-info_sound_files(path = "./examples/bbcu_xc_wav")
+info_sound_files(path = "./examples/bbcu_xc_wav/converted_sound_files")
+# Yay this works!!!!
 check_sound_files()
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

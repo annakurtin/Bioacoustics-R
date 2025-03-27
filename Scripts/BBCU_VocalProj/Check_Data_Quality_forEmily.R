@@ -23,9 +23,11 @@ mp32wav(path = "./examples/bbcu_xc_mp3", dest.path = "./examples/bbcu_xc_wav")
 # writeWave(r,"./examples/bbcu_xc_wav/16525.wav",extensible=FALSE)
 
 # Use this loop
-folder <- "F:/Cuckoo_Acoustic_Data/BBCU_Xeno-Canto_Files/coccyzus-erythropthalmus/mp3s"
+folder <- "H:/BBCU_xenocanto/originals_unstandardized"
+# Old version: F:/Cuckoo_Acoustic_Data/BBCU_Xeno-Canto_Files/coccyzus-erythropthalmus/mp3s"
 files <- list.files(folder)
-folder_wav <- "./examples/bbcu_xc_wav"
+folder_wav <- "H:/BBCU_xenocanto/new_standardized"
+#"./examples/bbcu_xc_wav"
 
 for(i in files){
   # Read mp3 
@@ -40,14 +42,14 @@ for(i in files){
 # Step 2: Standardize parameters of files
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Let's check out the properties of the .wav sound files
-info_sound_files(path = "./examples/bbcu_xc_wav_orig")
+info_sound_files(path = "H:/BBCU_xenocanto/new_standardized")
 # You want the same sampling rate, dynamic interval and number of channels
 
 # Let's make them all the same parameters so that we can compare them 
 # Make them all 44.1 and 16 bit depth
-fix_wavs(path = "./examples/bbcu_xc_wav_standardized", samp.rate = 44.1, bit.depth = 16)
+fix_wavs(path = "H:/BBCU_xenocanto/new_standardized", samp.rate = 44.1, bit.depth = 16)
 # Check that this worked
-info_sound_files(path = "./examples/bbcu_xc_wav_standardized/converted_sound_files")
+info_sound_files(path = "H:/BBCU_xenocanto/new_standardized")
 # Yay this works!!!!
 #check_sound_files()
 

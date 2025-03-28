@@ -8,6 +8,7 @@ library(tidyverse)
 ## YOU JUST NEED TO CHANGE THESE NEXT FEW LINES
 # You will be able to run the rest of the code without changing anything
 # Change this to be the directory where the selection tables are stored
+# Before running this code, go through and CAREFULLY rename the selection table names so they are standardized. Make sure you have a backup before doing this!!
 st_directory <- "D:/TestFiles_Emily/selection_tables/"
 # Change this to be the directory where the audio is stored
 audio_directory <- "D:/TestFiles_Emily/audio"
@@ -120,52 +121,3 @@ pca_loads %>% arrange(desc(PC1))
 pca_loads %>% arrange(desc(PC2))
 # Second blue box at this site describes what these spectral properties mean: https://marce10.github.io/PR_BIR_2024/measure_acoustic_structure.html
 
-
-
-#### Graveyard - Ignore######
-# # Troubleshooting
-# warbleR_options(wav.path = "D:/TestFiles_Emily/audio")
-# st_formatted <- selection_table(X = st, pb = FALSE)
-# st_checked <- check_sels(X = st, pb = FALSE, fix.selec = TRUE)
-
-# WarbleR options removd: , flim = c(1, 10), wl = 200, ovlp = 90, pb = FALSE
-
-# Read in one selection table as a dataframe
-#t1 <- read.delim("D:/TestFiles_Emily/selection_tables/for_analysis/selection_table_16525.txt")
-# the selection tables as they are don't have a file column 
-#rvn.dat <- imp_raven(path = "D:/TestFiles_Emily/selection_tables/for_analysis", sound.file.col = 'file_name')
-#Error: No column containing sound file names was found in any selection table file
-
-# Check if there are any missing files in this location
-#file_paths <- file.path("D:/TestFiles_Emily/audio", selection_tables_all$sound.files)
-#missing_files <- selection_tables_all$sound.files[!file.exists(file_paths)]
-# Nothing looks like it's missing - ??????
-#list.files(path = "D:/TestFiles_Emily/audio")
-#info_sound_files("D:/TestFiles_Emily/audio")
-
-# Error: Error in m[(fl[1]:fl[2]) + 1, ] : subscript out of bounds. Try googling this
-# st %>% group_by(sound.files) %>% summarize(max(end), max(top.freq))
-# file_info <- info_sound_files("D:/TestFiles_Emily/audio")
-# # Merge duration info with selection table
-# st_info <- st %>% 
-#   left_join(file_info %>% select(sound.files, duration), by = "sound.files")
-# list.files("D:/TestFiles_Emily/audio")
-# # Identify where end time exceeds duration
-# problem_rows <- st_info %>% filter(end > duration)
-# print(problem_rows)
-# # Filter out selections with end time exceeding the file duration
-# st <- st_info %>% filter(end <= duration)
-# test <- st %>% filter(bottom.freq < top.freq)
-# st %>% mutate(duration = end - start) %>% filter(duration < 0.01)
-# 
-# test <- spectro_analysis(st[1:10,], path = "D:/TestFiles_Emily/audio")
-# test <- spectro_analysis(st[11:49,], path = "D:/TestFiles_Emily/audio")
-# test <- spectro_analysis(st[11,], path = "D:/TestFiles_Emily/audio")
-# #Nothing working
-
-# Example
-# Load in your selection table
-# # what format do these need to be in?
-# data("lbh_selec_table")
-# # run spectro_analysis on this selection table and associated audio files - I think this takes a selection table where it's combined with sound files (refresh on this)
-# sp <- spectro_analysis(lbh_selec_table)
